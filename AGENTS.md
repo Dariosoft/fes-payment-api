@@ -19,6 +19,7 @@ Persiste únicamente en la base `payments`, usa Flyway, prepara RabbitMQ para ev
 
 ## Reglas
 - Lee la skill `/java-springboot` y la spec activa, si existe, antes de tocar código.
+- Usa `/clean-architecture` al diseñar o modificar capas, límites, dependencias, casos de uso o adaptadores.
 - Este servicio es la fuente de verdad de intentos, referencias del proveedor e idempotencia, no del pedido.
 - Toda creación o notificación repetible debe preservar la unicidad de `idempotency_key` y ser segura ante reintentos.
 - Nunca escribas tablas de pedidos; comunica resultados mediante contratos o eventos definidos.
@@ -28,6 +29,7 @@ Persiste únicamente en la base `payments`, usa Flyway, prepara RabbitMQ para ev
 - Los manifiestos y secretos pertenecen a `infra`; coordina allí cambios de puerto, ruta o configuración.
 
 ## Al terminar cualquier tarea
+- Tras cambios no triviales de código de producción, aplica `/clean-code-guard` antes de finalizar.
 - Ejecuta `./mvnw verify`; incluye Checkstyle y los tests.
 - Prueba idempotencia, reintentos y transiciones afectadas; añade migraciones para cambios de esquema.
 - Comprueba que no se hayan roto `/payments` ni los endpoints de Actuator.
