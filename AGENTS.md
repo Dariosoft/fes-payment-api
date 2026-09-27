@@ -18,8 +18,10 @@ Persiste únicamente en la base `payments`, usa Flyway, prepara RabbitMQ para ev
 - Crea nuevas migraciones Flyway; no edites migraciones ya aplicadas. Hibernate solo valida el esquema.
 
 ## Reglas
-- Lee la skill `/java-springboot` y la spec activa, si existe, antes de tocar código.
-- Usa `/clean-architecture` al diseñar o modificar capas, límites, dependencias, casos de uso o adaptadores.
+- Lee la spec activa, si existe, antes de tocar código.
+- Para implementar usa solo `/spring-boot-project-creator` en su opción Layered y `/clean-code-guard`.
+- La opción Layered organiza el paquete `com.friendlyeshop.payment` en `controller/`, `service/`, `repository/`, `model/`, `model/dto/`, `config/` y `exception/`.
+- No uses la opción DDD de esa skill ni regeneres el proyecto con Spring Initializr al modificar este servicio.
 - Este servicio es la fuente de verdad de intentos, referencias del proveedor e idempotencia, no del pedido.
 - Toda creación o notificación repetible debe preservar la unicidad de `idempotency_key` y ser segura ante reintentos.
 - Nunca escribas tablas de pedidos; comunica resultados mediante contratos o eventos definidos.
