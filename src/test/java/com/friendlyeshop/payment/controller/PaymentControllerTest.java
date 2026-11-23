@@ -1,4 +1,4 @@
-package com.friendlyeshop.payment;
+package com.friendlyeshop.payment.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
